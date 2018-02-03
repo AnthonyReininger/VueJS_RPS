@@ -31,7 +31,7 @@
       <button   @click="show = !show" id="start-game">START NEW GAME</button>
     </div>
   </section>
-  <section v-if="show" v-else="show" class="row controls">
+  <section @load="!show" v-if="show" v-else="show" class="row controls">
     <div  class="small-12 columns">
       <button @click="choose('rock')" id="rock">ROCK</button>
       <button @click="choose('paper')" id="paper">PAPER</button>
