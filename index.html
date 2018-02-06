@@ -12,7 +12,7 @@
     <div class="small-6 columns">
       <h1 class="text-center">PLAYER</h1>
       <div class="wins">
-        <div class="wins text-center"  style="background-color: green; margin: 0; color: white;">
+        <div class="wins text-center"  style="background-color: green; margin: 0; color: white;" :style="{ width: userScore + '0%'}">
           <p>{{ userScore }}</p>
         </div>
       </div>
@@ -20,8 +20,8 @@
     <div class="small-6 columns">
       <h1 class="text-center">COMPUTER</h1>
       <div class="wins">
-        <div class="wins text-center" style="background-color: green; margin: 0; color: white;">
-          <p>{{ computerScore }}</p>
+        <div class="wins text-center" style="background-color: green; margin: 0; color: white;" :style="{ width: computerScore + '0%'}">
+          <p>{{computerScore}}</p>
         </div>
       </div>
     </div>
@@ -31,21 +31,21 @@
       <button   @click="show = !show" id="start-game">START NEW GAME</button>
     </div>
   </section>
-  <section @load="!show" v-if="show" v-else="show" class="row controls">
+  <section  v-if="!show" v-else="show" v-model="!show" class="row controls">
     <div  class="small-12 columns">
       <button @click="choose('rock')" id="rock">ROCK</button>
       <button @click="choose('paper')" id="paper">PAPER</button>
       <button @click="choose('scissors')" id="scissors">SCISSORS</button>
-      <button @click="{{ userScore = 0}}{{ computerScore = 0}}{{ userPick = ''}} {{ randPick = ''}}" id="restart">RESTART</button>
+      <button @click="{{ userScore = 0}}{{ computerScore = 0}}{{ userPick = ''}} {{ randPick = ''}} {{turns = ''}}" id="restart">RESTART</button>
     </div>
   </section>
   <section class="row log">
     <div class="small-12 columns">
       <ul>
-        <li v-bind:class="">
-          {{ userPick }}     VS.    {{ randPick }}
+        <li v-for="turn in turns"
+            :class="{'player-turn': turn.isPlayer, 'computer-turn': !turn.isPlayer, 'tie-turn': turn.tie}">
+          {{ turn.text }}
         </li>
-
       </ul>
     </div>
   </section>
