@@ -6,7 +6,8 @@ new Vue({
       randPick: null,
       userScore: 0,
       computerScore: 0,
-      turns: []
+      turns: [],
+
   },
   methods: {
       choose: function (pick) {
@@ -54,7 +55,7 @@ new Vue({
                   this.userScore++;
                   this.turns.unshift({
                       isPlayer: false,
-                      text: 'Computer Chose Rock | Paper Beats scissors | You Wins!'
+                      text: 'Computer Chose Rock | Rock Beats Paper | You Wins!'
                   });
                   if(this.userScore == 10){
                       alert('You Win!');
@@ -110,13 +111,6 @@ new Vue({
               }
           }
       },
-      ComWinAlert: function() {
-          alert('Computer Wins, Sorry!');
-      },
-      UsWinAlert: function() {
-          alert('You Win!');
-      }
-
 
   }
 });

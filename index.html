@@ -5,9 +5,11 @@
     <script src="https://npmcdn.com/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="css/foundation.min.css">
     <link rel="stylesheet" href="css/app.css">
+
 </head>
 <body>
 <div id="app">
+  <span>{{datenow}}</span>
   <section class="row">
     <div class="small-6 columns">
       <h1 class="text-center">PLAYER</h1>
@@ -28,7 +30,7 @@
   </section>
   <section class="row controls">
     <div @click="" class="small-12 columns">
-      <button   @click="show = !show" id="start-game">START NEW GAME</button>
+      <button   @click="show = !show" @click="{{ userScore = 0}}{{ computerScore = 0}}{{ userPick = ''}} {{ randPick = ''}} {{turns = []}}" id="start-game">START NEW GAME</button>
     </div>
   </section>
   <section  v-if="!show" v-else="show" v-model="!show" class="row controls">
@@ -36,7 +38,7 @@
       <button @click="choose('rock')" id="rock">ROCK</button>
       <button @click="choose('paper')" id="paper">PAPER</button>
       <button @click="choose('scissors')" id="scissors">SCISSORS</button>
-      <button @click="{{ userScore = 0}}{{ computerScore = 0}}{{ userPick = ''}} {{ randPick = ''}} {{turns = ''}}" id="restart">RESTART</button>
+      <button @click="{{ userScore = 0}}{{ computerScore = 0}}{{ userPick = ''}} {{ randPick = ''}} {{turns = []}}" id="restart">RESTART</button>
     </div>
   </section>
   <section class="row log">
@@ -48,7 +50,7 @@
         </li>
       </ul>
     </div>
-  </section>
+
 </div>
 <script src="app.js"></script>
 </body>
